@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
@@ -10,6 +10,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using MLHDemosAPIs.Data;
 
 namespace MLHDemosAPIs
 {
@@ -26,6 +28,15 @@ namespace MLHDemosAPIs
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddDbContext<MLHDemosAPIsContext>(options =>
+
+            // This option is to use a in memory database, this should only be used for testing, and never production. 
+            // to use this you will need to install the package via Package Manager Console "Install-Package Microsoft.EntityFrameworkCore.InMemory"
+              options.UseInMemoryDatabase(databaseName: "database_name"));
+
+            // This Option is for accessing a SQL database
+            //options.UseSqlServer(Configuration.GetConnectionString("MLHDemosAPIsContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

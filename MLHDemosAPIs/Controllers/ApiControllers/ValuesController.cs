@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace MLHDemosAPIs.Controllers.ApiControllers
 {
-    [Route("api/[controller]")]
+
+
+    // very basic api sample 
+    // route: https://localhost:5001/api/v1/Values
+
+
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class ValuesController : ControllerBase
     {
@@ -21,7 +27,7 @@ namespace MLHDemosAPIs.Controllers.ApiControllers
         [HttpGet("{id}")]
         public string Get(int id)
         {
-            return "value";
+            return id.ToString();
         }
 
         // POST api/<ValuesController>

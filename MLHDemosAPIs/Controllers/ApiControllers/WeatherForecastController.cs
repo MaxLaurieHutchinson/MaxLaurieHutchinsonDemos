@@ -3,12 +3,17 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace MLHDemosAPIs.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+
+    // if you notice that i did not add api/v1/[controller] in front of this route,
+    // you can have anything you want in there
+
+    // route: https://localhost:5001/GetMyWeatherApi
+
+    [Route("GetMyWeatherApi")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
