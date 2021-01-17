@@ -1,43 +1,35 @@
 ﻿# Databases and migrations 
 
-## overview 
+## Overview 
 
-A load of stuff i have compiled from multiple sources to create a guide. 
-
-We can work with a load of different databases using EFCore. 
-
-The main concept is to have a code first agnostic approach to designing and querying databases. 
-
-This means that you could replace the one database for another one and you code remains the same. 
-in addition to this, you can create the same database again after again in different  providers and get the same result. 
-
-... We all know we almost never do that, but it's a nice idea.
+A load of stuff I have compiled from multiple sources to create a guide.
+We can work with a load of different databases using EFCore.
+The main concept is to have a code first agnostic approach to designing and querying databases.
+This means that you could replace the one database for another one and your code remains the same. in addition to this, you can create the same database again after again in different providers and get the same result.
+... We all know we rarely do that, but it's a nice idea.
 
 
 
 ### How to do it from scratch
 
-To do this from scratch. 
-Install the below NuGet libraries 
+To do this from scratch. Install the below NuGet libraries
+Install-Package Microsoft.EntityFrameworkCore.SQLite Install-Package Microsoft.EntityFrameworkCore.Design
+Create a console project and then reference the above libraries.
 
-Install-Package Microsoft.EntityFrameworkCore.Sqlite
-Install-Package Microsoft.EntityFrameworkCore.Design
 
-Create a console project and then reference the above libraries. 
-
-TODO index:
-Create the database
-Create a migration that represents the structure of the database
-Apply the new migration to create the database
-Read from the database
-Write to the database
-Seed our database with initial data
+TODO index: 
+* Create the database 
+* Create a migration that represents the structure of the database 
+* Apply the new migration to create the database 
+* Read from the database 
+* Write to the database 
+* Seed new database with initial data
 
 
 
 ### Learning Resources 
 
-#### Main one to read
+#### The main one to read
 
 [Migrations](https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrations/?tabs=dotnet-core-cli)
 
@@ -69,18 +61,20 @@ Eager loading is more advanced but really worth learning.
 ### Data design approaches 
 
 #### Schema first, 
-In this method, you would define your Database Schema, (tables etc) upon you database. most commonly on Microsoft SQL Server Management Studio.
-though this method its can be a lot more work to provision all of the databases, but can add more in depth functionally if you are a experienced Database administrator. 
-If your not a experienced Database administrator, you could end up not setting up table relationships correctly. 
-for example making sure that all the necessary the necessary tables have the correct foreign keys and needed table indexes. 
+In this method, you would define your Database Schema, (tables etc) upon your database. Most commonly on Microsoft SQL Server Management Studio. 
 
-At the End of this, you would need to reverse Engineer the Database with Migrations to generate the model structure in here. 
+Though this method can be a lot more work to provide all of the databases but can add more in-depth functionally if you are an experienced Database administrator.
+
+If your not an experienced Database administrator, you could end up not setting up table relationships correctly. For example, making sure that all the necessary tables have the correct foreign keys and needed table indexes.
+
+At the end of this, you would need to reverse engineer the database with Migrations to generate the model structure in here.
 
 #### Code first, 
-In this method, you would define your Database Schema within the entity models and db context first. 
-In this approach, you can use agile methodologies to change and iterate the final database structure first before creating it upon a database.
-This works out better as you can setup the same database again after again and get the same result.   
+In this method, you would define your Database Schema within the entity models and DB context first. 
 
+In this approach, you can use agile methodologies to change and iterate the final database structure first before creating it upon a database. 
+
+This works out better as you can set up the same database again after again and get the same result.
 
 ### migration Code 
 
