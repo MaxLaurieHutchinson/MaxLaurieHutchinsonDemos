@@ -13,7 +13,12 @@ This means that you could replace the one database for another one and your code
 ### How to do it from scratch
 
 To do this from scratch. Install the below NuGet libraries
-Install-Package Microsoft.EntityFrameworkCore.SQLite Install-Package Microsoft.EntityFrameworkCore.Design
+
+```
+Install-Package Microsoft.EntityFrameworkCore.SQLite 
+Install-Package Microsoft.EntityFrameworkCore.Design
+```
+
 Create a console project and then reference the above libraries.
 
 
