@@ -81,18 +81,33 @@ This works out better as you can set up the same database again after again and 
 #### Create a migration
 
 ```c#
-dotnet ef migrations add InitialCreate
+// Simple 
+Add-Migration InitialCreate
+// with Directory location
+Add-Migration InitialCreate -OutputDir Your\Directory
 ```
 
 #### Undo a migration
 
 ```c#
-dotnet ef migrations remove
+// To remove the last migration
+Remove-Migration
 ```
+To remove all migrations, Delete the migrations folder. 
 
 
 #### Apply a migration to a database 
 
 ```c#
-dotnet ef database update
+// Generates a SQL script from a blank database to the latest migration
+Script-Migration
 ```
+
+#### Idempotent SQL scripts
+
+```c#
+// EF Core also supports generating idempotent scripts, which internally check which migrations have already been applied (via the migrations history table)
+Script-Migration -Idempotent
+```
+
+
