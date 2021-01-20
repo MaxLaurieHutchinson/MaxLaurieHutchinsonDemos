@@ -74,16 +74,16 @@ If your not an experienced Database administrator, you could end up not setting 
 
 At the end of this, you would need to reverse engineer the database with Migrations to generate the model structure in here.
 
-#### Code first, 
+#### Code First, 
 In this method, you would define your Database Schema within the entity models and DB context first. 
 
 In this approach, you can use agile methodologies to change and iterate the final database structure first before creating it upon a database. 
 
 This works out better as you can set up the same database again after again and get the same result.
 
-### migration Code 
+### Migration Code 
 
-#### Create a migration
+#### Create a Migration
 
 ```c#
 // Simple 
@@ -92,7 +92,7 @@ Add-Migration InitialCreate
 Add-Migration InitialCreate -OutputDir Your\Directory
 ```
 
-#### Undo a migration
+#### Undo a Migration
 
 ```c#
 // To remove the last migration
@@ -101,17 +101,26 @@ Remove-Migration
 To remove all migrations, Delete the migrations folder. 
 
 
-#### Apply a migration to a database 
+#### Script a Migration to the Migrations Folder 
 
 ```c#
 // Generates a SQL script from a blank database to the latest migration
 Script-Migration
 ```
 
-#### Idempotent SQL scripts
+#### Apply Migration to the Database in DBcontext 
 
 ```c#
-// EF Core also supports generating idempotent scripts, which internally check which migrations have already been applied (via the migrations history table)
+// be vary careful 
+update-database
+```
+
+#### Idempotent SQL Scripts
+
+```c#
+// EF Core also supports generating idempotent scripts. 
+// Which internally check which migrations have already been applied (via the migrations history table)
+// This script can only be used on SQL Server and not available for on SQLite.
 Script-Migration -Idempotent
 ```
 

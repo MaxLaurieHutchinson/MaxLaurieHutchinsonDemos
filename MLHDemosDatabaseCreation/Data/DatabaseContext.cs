@@ -16,7 +16,7 @@ namespace MLHDemosDatabaseCreation.Data
         // This is for local database,
         // Other options are SQL databases... but i am not risking you do that on one ;)
 
-        // This instantiates the use of a Local SQLlite Database for our testing 
+        // This instantiates the use of a Local SQLlite Database for our testing
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite("Data Source=database.db");
